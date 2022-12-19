@@ -1,0 +1,82 @@
+﻿<h1>Çalışanlar sayfası</h1>
+@using Inventories.Entities;
+@model List<User>
+
+<div class="row">
+    <div class="col">
+        @{
+            string username = ViewContext.HttpContext.Session.GetString("username");
+        }
+        @if (username.Contains("admin"))
+        {
+            <button class="btn btn-primary mb-2">Add</button>
+        }
+
+        @{
+            DatabaseContext db = new();
+            if (db.Users.Any())
+            {
+                <table class="table table-bordered table-hover table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Adı</th>
+                            <th>Soyadı</th>
+                            <th>İşten çıktı mı</th>
+                            <th>Giriş Tarihi</th>
+                            <th>Çıkış Tarihi</th>
+                            <th>Bölümü</th>
+                            @if (username.Contains("admin"))
+                            {
+                                <th></th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (User item in Model)
+                        {
+                            if (!item.Username.Contains("admin"))
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Surname</td>
+                                    @if (@item.IsBreak)
+                                    {
+                                        <td>Evet</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Hayır</td>
+                                    }
+                                    <td>@item.StartDateJob?.ToString("dddd, dd MMMM yyyy")</td>
+                                    @if (item.EmploymentDate == null)
+                                    {
+                                        <td>Devam Ediyor</td>
+                                    }
+                                    else
+                                    {
+                                        <td>item.EmploymentDate</td>
+                                    }
+                                    <td>@item.Departman.DepartmanName</td>
+
+                                    @if (username.Contains("admin"))
+                                    {
+                                        <td class="d-flex justify-content-evenly ">
+                                            <button class="btn btn-danger mb-md-auto align-self-center ">Sil</button>
+                                            <button class="btn btn-info mb-md-auto align-self-center ">Düzenle</button>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="dispaly-4">Kayıtlı personel bulunmamaktadır</p>
+            }
+        }
+
+    </div>
+</div>

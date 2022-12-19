@@ -1,0 +1,37 @@
+﻿@using Inventories.Models.Departman;
+
+@model EditModel
+
+<div class="row mb-3">
+    <div class="col">
+        <h1 class="display-4 border-bottom">Bölümü Sil</h1>
+        <h4>Bölümü Silmek istediğinizden emin misiniz?</h4>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col">
+        <dl>
+            <dt>Bölüm Adı</dt>
+            <dd>@Model.DepartmanName</dd>
+            <dt>Bölüm Açıklaması</dt>
+            <dd>@Model.JobDescription</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        @*<form method="post" asp-action="DeleteConfirm"
+        asp-route-id="@ViewContext.RouteData.Values["id"]">
+        <button type="submit" class="btn btn-danger btn-sm">Yes, Delete!</button>
+        <a asp-action="Index" class="btn btn-secondary btn-sm">Back to List!</a>
+        </form>*@
+
+
+        <form method="post">
+            <button type="submit" class="btn btn-danger btn-sm">Sil!</button>
+            <a asp-action="Index" class="btn btn-secondary btn-sm">Geri Dön</a>
+        </form>
+    </div>
+</div>

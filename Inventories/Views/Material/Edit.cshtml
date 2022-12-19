@@ -1,0 +1,47 @@
+﻿@using Inventories.Models.Material;
+@model CreateModel
+<div class="row">
+    <div class="col-8 offset-2 ">
+        <form method="post" class="mt-2 text-center">
+            <h2 class="mb-4">Yeni Bölüm Ekle</h2>
+            <div class="text-danger small mb-3" asp-validation-summary="ModelOnly"></div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control input-sm" placeholder="" asp-for="MaterialName" />
+                <label class="text-muted small" asp-for="MaterialName"></label>
+                <span class="text-danger small" asp-validation-for="MaterialName"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control input-sm" placeholder="" asp-for="MaterialDescription" />
+                <label class="text-muted small" asp-for="MaterialDescription"></label>
+                <span class="text-danger small" asp-validation-for="MaterialDescription"></span>
+            </div>
+
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" asp-for="IsSecondHane" id="IsSecondHane">
+                <label class="form-check-label" for="flexCheckDefault">
+                    İkinci El mi?
+                </label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control input-sm" placeholder="" asp-for="Price" />
+                <label class="text-muted small" asp-for="Price"></label>
+                <span class="text-danger small" asp-validation-for="Price"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control input-sm" placeholder="" asp-for="Stock" />
+                <label class="text-muted small" asp-for="Stock"></label>
+                <span class="text-danger small" asp-validation-for="Stock"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control input-sm" placeholder="" asp-for="SerialNumber" />
+                <label class="text-muted small" asp-for="SerialNumber"></label>
+                <span class="text-danger small" asp-validation-for="SerialNumber"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa-thin fa-arrow-right-to-arc"></i> Güncelle
+            </button>
+        </form>
+    </div>
+</div>

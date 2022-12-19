@@ -1,0 +1,47 @@
+﻿@model LoginModel;
+
+
+<div class="row">
+    <div class="col-md-8 d-none d-sm-none d-md-block custom-header text-light">
+        <div class="login-row d-flex ">
+            <i class="fa-sharp fa-solid fa-fire fa-2xl mt-4 pt-3 pe-2"></i>
+            <p class=" head-text">Everyting.</p>
+        </div>
+        <div class="login-text">
+            <p style="font-size:22px">
+                <em>Welcome to Everything!</em>
+            </p>
+        </div>
+
+    </div>
+    <div class="col-md-4 align-self-center ">
+        <form method="post" class="mt-2 text-center">
+            <h2 class="mb-4">Everything</h2>
+            <div class="text-danger small mb-3" asp-validation-summary="ModelOnly"></div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control input-sm" placeholder="Kullanıcı adı" asp-for="Username" />
+                <label class="text-muted small" asp-for="Username"></label>
+                <span class="text-danger small" asp-validation-for="Username"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control input-sm" placeholder="Şifre" asp-for="Password" />
+                <label class="text-muted small" asp-for="Password"></label>
+                <span class="text-danger small" asp-validation-for="Password"></span>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">
+                <i class="fa-thin fa-arrow-right-to-arc"></i> Login
+            </button>
+            @*<i class="fa-light fa-arrow-right-from-arc"></i> çıkış*@
+            <div class="d-flex mt-3 mb-1">
+                <p style="font-size:17px;">Not registered yet?</p>
+                <a style="font-size:17px;text-decoration:none;" asp-action="Register" asp-controller="Account" class=" link-primary">Create an Account</a>
+            </div>
+            <hr class="m-0 p-0"/>
+        </form>
+        <div class="">
+            <button class="btn btn-primary other-register mt-2"><i class="fa-brands fa-facebook pe-1"></i>Facebook</button>
+            <button class="btn bg-white border border-primary other-register mt-2"><i class="fa-brands fa-google me-3"></i>Google</button>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,43 @@
+﻿@using Inventories.Entities;
+@model List<Departman>
+
+<h1>Bölümler sayfası</h1>
+<div class="row">
+    <div class="col">
+        @{
+            string username = ViewContext.HttpContext.Session.GetString("username");
+        }
+        @if (username.Contains("admin"))
+        {
+            <a class="btn btn-primary mb-2" asp-action="Create" >Ekle </a>
+        }
+        <table class="table table-bordered table-hover table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Bölüm Adı</th>
+                    <th>Bölüm Açıklaması</th>
+                    @if (username.Contains("admin"))
+                    {
+                        <th></th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Departman item in Model)
+                {
+                    <tr>
+                        <td>@item.DepartmanName</td>
+                        <td>@item.JobDescription</td>
+                        @if (username.Contains("admin"))
+                        {
+                            <td class="d-flex justify-content-evenly ">
+                                <a class="btn btn-danger mb-md-auto align-self-center " asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                                <a class="btn btn-info mb-md-auto align-self-center" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

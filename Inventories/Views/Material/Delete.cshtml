@@ -1,0 +1,45 @@
+﻿@using Inventories.Models.Material;
+
+@model EditModel
+
+<div class="row mb-3">
+    <div class="col">
+        <h1 class="display-4 border-bottom">Malzeme Silme</h1>
+        <h4>Malzemeyi silmek istediğinizden emin misiniz?</h4>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col">
+        <dl>
+            <dt>Malzeme İsmi</dt>
+            <dd>@Model.MaterialName</dd>
+            <dt>Malzeme Detayı</dt>
+            <dd>@Model.MaterialDescription</dd>
+            <dt>İkinci El mi?</dt>
+            <dd>@Model.IsSecondHane?</dd>
+            <dt>Malzeme Fiyatı</dt>
+            <dd>@Model.Price</dd>
+            <dt>Stok Durumu</dt>
+            <dd>@Model.Stock</dd>
+            <dt>Malzemenin Seri numarası</dt>
+            <dd>@Model.SerialNumber</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        @*<form method="post" asp-action="DeleteConfirm"
+        asp-route-id="@ViewContext.RouteData.Values["id"]">
+        <button type="submit" class="btn btn-danger btn-sm">Yes, Delete!</button>
+        <a asp-action="Index" class="btn btn-secondary btn-sm">Back to List!</a>
+        </form>*@
+
+
+        <form method="post">
+            <button type="submit" class="btn btn-danger btn-sm">Sil!</button>
+            <a asp-action="Index" class="btn btn-secondary btn-sm">Geri dön</a>
+        </form>
+    </div>
+</div>

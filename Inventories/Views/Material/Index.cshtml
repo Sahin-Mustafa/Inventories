@@ -1,0 +1,71 @@
+﻿<h1>Malzemeler sayfası</h1>
+@using Inventories.Entities;
+@model List<Material>
+
+<div class="row">
+    <div class="col">
+
+        @if (ViewContext.HttpContext.Session.GetString("ispurchasing") == "Satın Alma")
+        {
+            <a class="btn btn-primary mb-2" asp-Action="Create">Ekle </a>
+        }
+        @{
+            DatabaseContext db = new();
+            if (db.Users.Any())
+            {
+                <table class="table table-bordered table-hover table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Adı</th>
+                            <th>Açıklama</th>
+                            <th>2. el mi</th>
+                            <th>Fiyatı</th>
+                            <th>Stok</th>
+                            <th>Seri no</th>
+                            @if (ViewContext.HttpContext.Session.GetString("ispurchasing") == "Satın Alma")
+                            {
+                                <th></th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Material item in Model)
+                        {
+                            <tr>
+                                <td>@item.MaterialName</td>
+                                <td>@item.MaterialDescription</td>
+                                @if (@item.IsSecondHane)
+                                {
+                                    <td>Evet</td>
+                                }
+                                else
+                                {
+                                    <td>Hayır</td>
+                                }
+
+                                <td>@item.Price ₺</td>
+                                <td>@item.Stock adet</td>
+                                <td>@item.SerialNo</td>
+                                @if (ViewContext.HttpContext.Session.GetString("ispurchasing") == "Satın Alma")
+                                {
+                                    <td class="d-flex justify-content-evenly ">
+                                        <a class="btn btn-danger mb-md-auto align-self-center " asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                                <a class="btn btn-info mb-md-auto align-self-center" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a>
+                                    </td>
+                                }
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="dispaly-4">Kayıtlı malzeme  bulunmamaktadır</p>
+            }
+        }
+
+    </div>
+</div>
+</div>

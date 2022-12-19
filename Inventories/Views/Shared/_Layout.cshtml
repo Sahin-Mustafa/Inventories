@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Inventories</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Inventories.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Everything</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Ana sayfa</a>
+                        </li>
+                        @if (ViewContext.HttpContext.Session.GetInt32("userid") == null)
+                        {
+                            <li class="nav-item ms-sm-auto">
+                                <a class="nav-link text-dark " asp-area="" asp-controller="Account" asp-action="Login">Giriş</a>
+                            </li>                        
+                        }
+                        else
+                        {
+                            string username = ViewContext.HttpContext.Session.GetString("username");
+
+                            if (username.Contains("admin"))
+                            {
+                                <li class="nav-item ">
+                                    <a class="nav-link text-dark " asp-area="" asp-controller="Account" asp-action="Register">Personel Kayıt</a>
+                                </li>
+                            }
+                            <li class="nav-item ">
+                                <a class="nav-link text-dark " asp-area="" asp-controller="Departman" asp-action="Index">Bölümler </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-dark " asp-area="" asp-controller="Employee" asp-action="Index">Çalışanlar </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-dark " asp-area="" asp-controller="Material" asp-action="Index">Malzemeler </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-dark " asp-area="" asp-controller="Appropriate" asp-action="Index">Zimmetler </a>
+                            </li>
+                            
+                            <li class="nav-item dropdown ms-sm-auto me-1 ">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @ViewContext.HttpContext.Session.GetString("username")
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-end ">
+                                    <li>
+                                        <a class="dropdown-item" asp-action="Profile" asp-controller="Account">Profil</a>
+                                    </li>
+                                    <hr />
+                                    <li>
+                                        <a class="dropdown-item" asp-action="Logout" asp-controller="Home"><i class="fa-solid fa-sign-out me-2"></i>Çıkış</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - Inventories - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

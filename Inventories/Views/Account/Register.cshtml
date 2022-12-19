@@ -1,0 +1,73 @@
+﻿@model RegisterModel
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <form method="post">
+            <div class="mb-2 text-center text-secondary">
+                <i class="fa-solid fa-user-plus fa-6x"></i>
+            </div>
+
+
+            <div class="form-floating mb-2">
+                <input asp-for="Username" type="text" class="form-control  input-sm" />
+                <label asp-for="Username"></label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input asp-for="Password" type="password" class="form-control input-sm" />
+                <label asp-for="Password"></label>
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input asp-for="Name" type="text" class="form-control input-sm" />
+                <label asp-for="Name"></label>
+            </div>
+            <div class="form-floating mb-2">
+                <input asp-for="Surname" type="TEXT" class="form-control input-sm" />
+                <label asp-for="Surname"></label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input class="form-control input-sm" type="datetime-local"  value="2000-01-01" asp-for="StartDateJob" />
+                <label asp-for="StartDateJob"></label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" asp-for="IsBreak" id="Isbreak">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Did the staff quit?
+                </label>
+            </div>
+            <div class="form-floating mb-2" id="ShowHideMe" style="display:none">
+                <input asp-for="EmploymentDate" type="datetime-local" value="2000-01-01" class="form-control input-sm" />
+                <label asp-for="EmploymentDate"></label>
+            </div>
+
+            <div class="form-group mb-2">
+                <label class="control-label">Bölümü:</label>
+                <select class="form-select" asp-items="Model.Departmans" asp-for="SelectedDepartman">Lütfen Seçiniz</select>
+            </div>
+
+
+            <div class="text-center d-flex justify-content-between ">
+                <button asp-action="Index" asp-controller="Home" type="submit" class="btn btn-primary">
+                    Back to Home
+                </button>
+                <button type="submit" class="btn btn-success">
+                    <i class="fa-solid fa-floppy-disk me-2"></i>Save
+                </button>
+            </div>
+
+            @if (ViewData["done"] != null)
+            {
+                if ((bool)ViewData["done"] == true)
+                {
+                    <div class="alert alert-success mt-3">Kullanıcı başarılı bir şekilde Kayıt Edildi</div>
+                }
+                else
+                {
+                    <div class="alert alert-danger mt-3">Kullanıcı adı Kullanımda</div>
+                }
+            }
+        </form>
+    </div>
+</div>
