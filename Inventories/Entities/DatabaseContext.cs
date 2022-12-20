@@ -7,7 +7,7 @@ namespace Inventories.Entities
         public DbSet<User> Users { get; set; }
         public DbSet<Departman> Departmans { get; set; }
         public DbSet<Material> Materials{ get; set; }
-        //public DbSet<MaterialUser> MaterialUser { get; set; }
+        public DbSet<MaterialUser> MaterialsUsers { get; set; }
 
 
         public DatabaseContext()
@@ -18,7 +18,7 @@ namespace Inventories.Entities
         {
             if (optionsBuilder.IsConfigured == false)
             {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-TGAGQ1J\\SQLEXPRESS;Database=InventoriesApp;Trusted_Connection=true;encrypt=false");
+                optionsBuilder.UseSqlServer("Server=.\\SABAHMS;Database=InventoriesApp;Trusted_Connection=true;encrypt=false");
             }
         }
 

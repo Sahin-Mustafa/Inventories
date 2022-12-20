@@ -77,9 +77,9 @@ namespace Inventories.Controllers
                 MaterialDescription = material.MaterialDescription,
                 IsSecondHane = material.IsSecondHane,
                 Price = material.Price,
-                Stock   = material.Stock,
-                SerialNumber =material.SerialNo
-                
+                Stock = material.Stock,
+                SerialNumber = material.SerialNo
+
 
             };
 

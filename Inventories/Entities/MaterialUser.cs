@@ -2,7 +2,7 @@
 
 namespace Inventories.Entities
 {
-    [Table("MaterialUser")]
+    [Table("MaterialsUsers")]
     public class MaterialUser
     {
         public int Id { get; set; }

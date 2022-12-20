@@ -1,1 +1,47 @@
 ﻿<h1>Zimmetler Sayfası</h1>
+
+@using Inventories.Models.Appropriate;
+@model List<BaseModel>
+
+<div class="row">
+    <div class="col">
+        @{
+            string username = ViewContext.HttpContext.Session.GetString("username");
+        }
+        @if (username.Contains("admin"))
+        {
+            <a class="btn btn-primary mb-2" asp-action="Create">Ekle </a>
+        }
+        <table class="table table-bordered table-hover table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Çalışan Adı</th>
+                    <th>Malzeme Adı</th>
+                    <th>Malzeme Seri Numarası</th>
+                    <th>İşlem Tarihi</th>
+                    @if (username.Contains("admin"))
+                    {
+                        <th></th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (BaseModel item in Model)
+                {
+                    <tr>
+                        <td>@item.EmployeeFullName</td>
+                        <td>@item.MaterialName</td>
+                        <td>@item.MaterialSerialNo</td>
+                        <td>@item.AppropriateDate</td>
+                        @if (username.Contains("admin"))
+                        {
+                            <td class="d-flex justify-content-evenly ">
+                                <a class="btn btn-danger mb-md-auto align-self-center " asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

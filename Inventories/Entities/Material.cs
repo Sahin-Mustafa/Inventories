@@ -29,6 +29,6 @@ namespace Inventories.Entities
         [Display(Name = "Malzemenin seri numarası")]
         public string SerialNo { get; set; }
 
-        public List<User> User{ get; set; }
+        public List<MaterialUser> MaterialUser { get; set; }
     }
 }

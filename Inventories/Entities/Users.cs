@@ -34,6 +34,6 @@ namespace Inventories.Entities
         //navigation property
         public Departman? Departman { get; set; }
 
-        public List<Material> Material { get; set; }
+        public List<MaterialUser> MaterialUser { get; set; }
     }
 }

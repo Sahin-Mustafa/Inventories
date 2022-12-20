@@ -26,7 +26,7 @@ namespace Inventories.Controllers
                     HttpContext.Session.SetInt32("userid", user.Id);
                     HttpContext.Session.SetString("username", user.Username);
                     HttpContext.Session.SetString("ispurchasing", !user.Username.Contains("admin") ? user.Departman?.DepartmanName : "admin");
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Material");
                 }
                 else
                 {
@@ -39,6 +39,7 @@ namespace Inventories.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+
             RegisterModel model = GetAllDepartmansView();
             return View(model);
         }
@@ -46,11 +47,14 @@ namespace Inventories.Controllers
         [HttpPost]
         public IActionResult Register(RegisterModel model)
         {
-            //var selectedDepartman = model.SelectedDepartman; --> id string
             UserManager userManager = new();
-            bool done = userManager.AddUser(model);
+            if (ModelState.IsValid)
+            {
+                //var selectedDepartman = model.SelectedDepartman; --> id string
+                bool done = userManager.AddUser(model);
 
-            ViewData["done"] = done;
+                ViewData["done"] = done;
+            }
             model = GetAllDepartmansView();
             return View(model);
         }

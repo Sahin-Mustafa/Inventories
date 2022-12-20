@@ -1,0 +1,32 @@
+﻿@using Inventories.Models.Appropriate;
+<h1>Process Create page </h1>
+@model Create
+
+<div class="row offset-2">
+    <div class="col-8">
+        <form method="post">
+            <label asp-for="SelectedMaterial" class="form-label">Malzeme</label>
+            <select asp-for="SelectedMaterial" asp-items="@Model.Materials" class="form-select">
+                <option value="" selected="selected">Seçiniz</option>
+                @*<option value="34">İstanbul</option>
+                <option value="06">Ankara</option>*@
+            </select>
+            <span asp-validation-for="SelectedMaterial" class="text-danger small"></span>
+
+
+            <div class="mb-3">
+                <label asp-for="SelectedEmployee" class="form-label">Çalışan</label>
+                <select asp-for="SelectedEmployee" asp-items="@Model.Employees" class="form-select">
+                    <option value="" selected="selected">Seçiniz</option>
+                    @*<option value="34">İstanbul</option>
+                    <option value="06">Ankara</option>*@
+                </select>
+                <span asp-validation-for="SelectedEmployee" class="text-danger small"></span>
+
+                <div>
+                    <button type="submit" class="btn btn-primary float-end mt-2">İşlemi Kayıt et</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
