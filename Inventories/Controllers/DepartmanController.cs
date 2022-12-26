@@ -11,6 +11,12 @@ namespace Inventories.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            int? userid = HttpContext.Session.GetInt32("userid");
+
+            if (userid == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             DepartmanManager departmanManager = new();
             List<Departman> model = departmanManager.GetAllDepartmans();
             return View(model);
@@ -24,6 +30,7 @@ namespace Inventories.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
+            
 
             return View();
         }
@@ -61,6 +68,7 @@ namespace Inventories.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
+            
 
             DepartmanManager departmanManager = new DepartmanManager();
             Departman departman = departmanManager.GetDepartmanById(id);

@@ -9,6 +9,12 @@ namespace Inventories.Controllers
     {
         public IActionResult Index()
         {
+            int? userid = HttpContext.Session.GetInt32("userid");
+
+            if (userid == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             MaterialManager materialManager = new();
             List<Material> model = materialManager.GetAllMaterials();
             return View(model);

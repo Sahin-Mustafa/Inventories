@@ -1,5 +1,13 @@
 ﻿$(function () {
     $('#Isbreak').change(function () {
-        $('#ShowHideMe').toggle($(this).is(':checked'));
+        if ($('#Isbreak').is(":checked")) {
+            $('#ShowHideMe').toggle($(this).is(':checked'));
+            // it is checked
+        }
+        else
+        {
+            $('.employmentdate').val("null")
+        }
+
     });
 });

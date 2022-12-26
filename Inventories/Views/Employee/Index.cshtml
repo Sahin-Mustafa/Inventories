@@ -7,10 +7,7 @@
         @{
             string username = ViewContext.HttpContext.Session.GetString("username");
         }
-        @if (username.Contains("admin"))
-        {
-            <button class="btn btn-primary mb-2">Add</button>
-        }
+        
 
         @{
             DatabaseContext db = new();
@@ -54,15 +51,15 @@
                                     }
                                     else
                                     {
-                                        <td>item.EmploymentDate</td>
+                                        <td>@item.EmploymentDate?.ToString("dd/MM/yyyy")</td>
                                     }
                                     <td>@item.Departman.DepartmanName</td>
 
                                     @if (username.Contains("admin"))
                                     {
                                         <td class="d-flex justify-content-evenly ">
-                                            <button class="btn btn-danger mb-md-auto align-self-center ">Sil</button>
-                                            <button class="btn btn-info mb-md-auto align-self-center ">Düzenle</button>
+                                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger  mb-md-auto align-self-center ">Sil</a>
+                                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info mb-md-auto align-self-center ">Düzenle</a>
                                         </td>
                                     }
                                 </tr>

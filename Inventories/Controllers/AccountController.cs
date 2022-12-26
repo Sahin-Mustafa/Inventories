@@ -39,8 +39,14 @@ namespace Inventories.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+            int? userid = HttpContext.Session.GetInt32("userid");
 
-            RegisterModel model = GetAllDepartmansView();
+            if (userid == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            RegisterModel model = new RegisterModel();
+            model.Departmans = GetAllDepartmansView(model);
             return View(model);
         }
 
@@ -55,26 +61,29 @@ namespace Inventories.Controllers
 
                 ViewData["done"] = done;
             }
-            model = GetAllDepartmansView();
+            model.Departmans = GetAllDepartmansView(model);
             return View(model);
         }
-        private static RegisterModel GetAllDepartmansView()
+        private static SelectList GetAllDepartmansView(RegisterModel model)
         {
-            RegisterModel model = new RegisterModel();
-            model.Departmans = new List<SelectListItem>();
+            
             DepartmanManager departmanManager = new();
             List<Departman> departmen = departmanManager.GetAllDepartmans();
-            foreach (Departman item in departmen)
-            {
-                model.Departmans.Add(new SelectListItem { Text = item.DepartmanName, Value = item.Id.ToString() });
-            }
+            model.Departmans = new SelectList (departmen, "Id","DepartmanName");
+            
 
-            return model;
+            return model.Departmans;
         }
 
         [HttpGet]
         public IActionResult Profile()
         {
+            int? userid = HttpContext.Session.GetInt32("userid");
+
+            if (userid == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View();
         }
     }

@@ -10,6 +10,12 @@ namespace Inventories.Controllers
     {
         public IActionResult Index()
         {
+            int? userid = HttpContext.Session.GetInt32("userid");
+
+            if (userid == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             AppropriateManager appropriateManager = new();
             List<BaseModel> model = appropriateManager.GetAll();
             return View(model);
@@ -18,6 +24,12 @@ namespace Inventories.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            int? userid = HttpContext.Session.GetInt32("userid");
+
+            if (userid == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             Create model = new Create();
             LoadDropDown(model);
             return View(model);
@@ -59,6 +71,7 @@ namespace Inventories.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
+            
 
             MaterialUserManager materialUserManager = new MaterialUserManager();
             MaterialUser materialUser = materialUserManager.GetById(id);
@@ -86,6 +99,7 @@ namespace Inventories.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
+            
             return Edit(id);
         }
 
