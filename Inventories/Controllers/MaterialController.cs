@@ -13,7 +13,7 @@ namespace Inventories.Controllers
 
             if (userid == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Employee");
             }
             MaterialManager materialManager = new();
             List<Material> model = materialManager.GetAllMaterials();
@@ -26,7 +26,7 @@ namespace Inventories.Controllers
 
             if (userid == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Employee");
             }
 
             return View();
@@ -39,7 +39,7 @@ namespace Inventories.Controllers
 
             if (userid == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Employee");
             }
 
             if (ModelState.IsValid)
@@ -63,7 +63,7 @@ namespace Inventories.Controllers
 
             if (userid == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Employee");
             }
 
             MaterialManager materialManager = new MaterialManager();

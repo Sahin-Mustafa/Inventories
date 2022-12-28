@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Inventories</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
     <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
@@ -25,7 +26,7 @@
                         @if (ViewContext.HttpContext.Session.GetInt32("userid") == null)
                         {
                             <li class="nav-item ms-sm-auto">
-                                <a class="nav-link text-dark " asp-area="" asp-controller="Account" asp-action="Login">Giriş</a>
+                                <a class="nav-link text-dark " asp-area="" asp-controller="Employee" asp-action="Login">Giriş</a>
                             </li>                        
                         }
                         else
@@ -35,7 +36,7 @@
                             if (username.Contains("admin"))
                             {
                                 <li class="nav-item ">
-                                    <a class="nav-link text-dark " asp-area="" asp-controller="Account" asp-action="Register">Personel Kayıt</a>
+                                    <a class="nav-link text-dark " asp-area="" asp-controller="Employee" asp-action="Register">Personel Kayıt</a>
                                 </li>
                             }
                             <li class="nav-item ">
@@ -57,9 +58,6 @@
                                 </a>
 
                                 <ul class="dropdown-menu dropdown-menu-end ">
-                                    <li>
-                                        <a class="dropdown-item" asp-action="Profile" asp-controller="Account">Profil</a>
-                                    </li>
                                     <hr />
                                     <li>
                                         <a class="dropdown-item" asp-action="Logout" asp-controller="Home"><i class="fa-solid fa-sign-out me-2"></i>Çıkış</a>

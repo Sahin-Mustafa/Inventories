@@ -17,7 +17,7 @@
             <dt>Çalışan Adı Soyadı</dt>
             <dd>(@Model.Name @Model.Surname)</dd>
             <dt>Çalışanın İşe Giriş Tarihi</dt>
-            <dd>@Model.StartDateJob?.ToString("dddd,dd/MM/yyyy")</dd>
+            <dd>@Model.StartDateJob.ToString("dddd,dd/MM/yyyy")</dd>
             <dt>Çalışanın İşten Çıkış Tarihi</dt>
 
             @if (@Model.EmploymentDate == null)

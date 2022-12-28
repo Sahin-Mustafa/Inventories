@@ -15,7 +15,7 @@ namespace Inventories.Controllers
 
             if (userid == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Employee");
             }
             DepartmanManager departmanManager = new();
             List<Departman> model = departmanManager.GetAllDepartmans();
@@ -28,7 +28,7 @@ namespace Inventories.Controllers
 
             if (userid == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Employee");
             }
             
 
@@ -42,7 +42,7 @@ namespace Inventories.Controllers
 
             if (userid == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Employee");
             }
 
             if (ModelState.IsValid)
@@ -66,7 +66,7 @@ namespace Inventories.Controllers
 
             if (userid == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Employee");
             }
             
 

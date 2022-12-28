@@ -14,7 +14,7 @@ namespace Inventories.Controllers
 
             if (userid == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Employee");
             }
             AppropriateManager appropriateManager = new();
             List<BaseModel> model = appropriateManager.GetAll();
@@ -28,7 +28,7 @@ namespace Inventories.Controllers
 
             if (userid == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Employee");
             }
             Create model = new Create();
             LoadDropDown(model);
@@ -54,9 +54,9 @@ namespace Inventories.Controllers
         {
             MaterialManager materialManager = new();
             UserManager userManager = new();
-            List<Material> materials = materialManager.GetAllMaterials();
+            List<Material> materials = materialManager.GetAllMaterialsInStock();
             List<User> users = userManager?.GetAllUsers();
-            users = users.Where(x => !x.Username.Contains("admin")).ToList();
+            users = users.Where(x => x.EmploymentDate==null).ToList();
 
             model.Materials = new SelectList(materials, nameof(Material.Id), nameof(Material.MaterialName));
             model.Employees = new SelectList(users, nameof(Entities.User.Id), nameof(Entities.User.Name));
@@ -69,7 +69,7 @@ namespace Inventories.Controllers
 
             if (userid == null)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Employee");
             }
             
 
@@ -108,6 +108,7 @@ namespace Inventories.Controllers
         public IActionResult DeleteConfirm(int id)
         {
             MaterialUserManager materialUserManager = new MaterialUserManager();
+
             materialUserManager.RemoveById(id);
 
             return RedirectToAction(nameof(Index));

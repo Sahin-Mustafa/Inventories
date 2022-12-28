@@ -9,8 +9,8 @@ internal class Program
 
         builder.Services.AddSession(options =>
         {
-            options.Cookie.Name = "noteapp.session";//web sayfamýzda kullanacaðýmýz ve session da tutulacak ismi belirledik.Herhangi bir þey yazýlabilir.
-            options.IdleTimeout = TimeSpan.FromMinutes(5); //5 dk iþlem yapýlmaz ise sessioný sýfýrladýk
+            options.Cookie.Name = "noteapp.session";
+            options.IdleTimeout = TimeSpan.FromMinutes(5); 
         });
 
         var app = builder.Build();
@@ -20,7 +20,7 @@ internal class Program
         {
             app.UseExceptionHandler("/Home/Error");
         }
-        app.UseSession(); //gelen isteklerde bu sessioný aktifleþtir.
+        app.UseSession(); 
         app.UseStaticFiles();
 
         app.UseRouting();

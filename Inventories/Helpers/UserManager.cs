@@ -1,5 +1,4 @@
 ﻿using Inventories.Entities;
-using Inventories.Models;
 using Inventories.Models.Employee;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

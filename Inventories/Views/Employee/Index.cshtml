@@ -44,14 +44,14 @@
                                     {
                                         <td>Hayır</td>
                                     }
-                                    <td>@item.StartDateJob?.ToString("dddd, dd MMMM yyyy")</td>
+                                    <td>@item.StartDateJob.ToString("dddd, dd MMMM yyyy")</td>
                                     @if (item.EmploymentDate == null)
                                     {
                                         <td>Devam Ediyor</td>
                                     }
                                     else
                                     {
-                                        <td>@item.EmploymentDate?.ToString("dd/MM/yyyy")</td>
+                                        <td>@item.EmploymentDate?.ToString("dddd,dd MMMM yyyy")</td>
                                     }
                                     <td>@item.Departman.DepartmanName</td>
 

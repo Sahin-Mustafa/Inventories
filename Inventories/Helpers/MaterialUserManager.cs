@@ -8,7 +8,7 @@ namespace Inventories.Helpers
     {
         private DatabaseContext db = new();
 
-        internal void AddAppropriate(Create model)
+        public void AddAppropriate(Create model)
         {
             MaterialUser materialUser = new MaterialUser()
             {
@@ -16,6 +16,8 @@ namespace Inventories.Helpers
                 UserId = model.SelectedEmployee,
                 AppropriateDate= DateTime.Now,
             };
+            Material newStock = db.Materials.FirstOrDefault(x => x.Id == model.SelectedMaterial);
+            newStock.Stock -= 1;
             db.MaterialsUsers.Add(materialUser);
             db.SaveChanges();
         }
@@ -29,6 +31,8 @@ namespace Inventories.Helpers
         internal void RemoveById(int id)
         {
             MaterialUser materialUser = GetById(id);
+            Material newStock = db.Materials.FirstOrDefault(x => x.Id == id);
+            newStock.Stock += 1;
             db.MaterialsUsers.Remove(materialUser);
             db.SaveChanges();
             
