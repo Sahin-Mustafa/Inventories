@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Inventories.Models
+namespace Inventories.Models.Employee
 {
     public class LoginModel
     {

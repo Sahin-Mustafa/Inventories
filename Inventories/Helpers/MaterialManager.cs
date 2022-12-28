@@ -11,6 +11,11 @@ namespace Inventories.Helpers
             List<Material> listMaterials = db.Materials.Where(x => x.Id != 0).ToList();
             return listMaterials;
         }
+        public List<Material> GetAllMaterialsInStock()
+        {
+            List<Material> listMaterials = db.Materials.Where(x => x.Stock != 0).ToList();
+            return listMaterials;
+        }
 
         internal void CreateMaterial(CreateModel model)
         {

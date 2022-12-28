@@ -27,7 +27,7 @@ namespace Inventories.Entities
 
         public bool IsBreak { get; set; }
 
-        public DateTime? StartDateJob { get; set; }
+        public DateTime StartDateJob { get; set; }
 
         public DateTime? EmploymentDate { get; set; }        
 
